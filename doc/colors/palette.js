@@ -7,7 +7,7 @@ const PALETTES_LEVELS = {
   3: [100, 200, 300, 400, 500, 600, 700, 800, 900],
 };
 
-const COLORS_DOMINANT = {
+const DOMINANT_BASIC_COLORS = {
   neutral: ["R", "G", "B"],
   red: ["R"],
   green: ["G"],
@@ -18,18 +18,14 @@ const COLORS_DOMINANT = {
 };
 
 export class PaletteComponent {
+  /**
+   * Render the scales for each color of a palette
+   * @param {Array.string} colors
+   * @param {number} level
+   */
   constructor(colors, level) {
-    this.colors = colors;
-    this.level = level;
-  }
-
-  _renderPaletteHeading() {
-    const palettesContainer = document.getElementById("palettes-container");
-
-    const paletteHeading = document.createElement("h2");
-    paletteHeading.textContent = `Palette level ${this.level} (${this.colors})`;
-
-    palettesContainer.appendChild(paletteHeading);
+    this._colors = colors;
+    this._level = level;
   }
 
   _renderScale(colorName, colorScale) {
@@ -50,7 +46,7 @@ export class PaletteComponent {
       const colorBox = document.createElement("div");
       colorBox.classList.add("color-box");
 
-      if (PALETTES_LEVELS[this.level].includes(scaleLevel)) {
+      if (PALETTES_LEVELS[this._level].includes(scaleLevel)) {
         colorBox.style.backgroundColor = hexValue;
         colorBox.innerHTML = `<p>${hexValue}</p><p class="text-white">${hexValue}</p>`;
       }
@@ -70,10 +66,7 @@ export class PaletteComponent {
     for (let scaleLevel = 0; scaleLevel <= 900; scaleLevel += 100) {
       const scaleBox = document.createElement("div");
       scaleBox.classList.add("scale-box");
-
-      if (scaleLevel >= 100 && scaleLevel <= 900) {
-        scaleBox.textContent = scaleLevel;
-      }
+      scaleBox.textContent = scaleLevel;
 
       scaleRow.appendChild(scaleBox);
     }
@@ -82,10 +75,8 @@ export class PaletteComponent {
   }
 
   render() {
-    //this._renderPaletteHeading();
-
-    for (let color of this.colors) {
-      const colorScale = new Scale(color, COLORS_DOMINANT[color]);
+    for (let color of this._colors) {
+      const colorScale = new Scale(color, DOMINANT_BASIC_COLORS[color]);
 
       this._renderScale(color, colorScale.build());
       this._renderScaleValues();
