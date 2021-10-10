@@ -1,26 +1,26 @@
 body {
   box-sizing: border-box;
-  color: #333;
-  margin: 2rem auto;
-  max-width: 64rem;
+  margin: auto;
+  padding: 2rem;
+  max-width: 80rem;
   font-family: Helvetica, Arial, sans-serif;
 }
 
 h1 {
-  margin: 2rem 0;
+  margin: 0 0 2rem 0;
 }
 
 h2 {
   font-size: 1.3rem;
-  margin: 2rem 0 0.5rem 0;
+  margin: 1.5rem 0 1rem 0;
 }
 
-.palette-row,
 .scale-row {
   display: flex;
   text-align: center;
 }
 
+.scale-name-box,
 .color-box,
 .scale-box {
   align-items: center;
