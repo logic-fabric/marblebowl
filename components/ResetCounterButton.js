@@ -6,9 +6,9 @@ export class ResetCounterButton {
   }
 
   resetCounter = () => {
-    this.counter.stopCounter;
+    this.counter.stopCounter();
     this.store.updateState({marbleAmount: 0});
-    this.counter.startCounter;
+    this.counter.startCounter();
   }
 
   render = () => {
