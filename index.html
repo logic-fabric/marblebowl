@@ -5,6 +5,11 @@
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+    integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+    crossorigin="anonymous"/>
 
     <meta property="og:title" content="" />
     <meta property="og:type" content="" />
@@ -75,7 +80,7 @@
       <section class="main-content">
         <h2>Contenue type d'une page Html</h2>
 
-        <h3>Paragraphe</h3>
+        <h2>Paragraphe</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam
           sapien sit amet diam dictum posuere. Praesent nec elit eu sapien
@@ -117,7 +122,17 @@
           >
         </p>
 
-        <h3>Citation</h3>
+        <h2>Listes</h2>
+
+        <ul>
+          <li>Item 01</li>
+          <li>Item 02</li>
+          <li>Item 03</li>
+          <li>Item 04</li>
+          <li>Item 05</li>
+        </ul>
+
+        <h2>Citation</h2>
         <blockquote>
           " Je ne cherche pas à connaître les réponses, je cherche à comprendre
           les questions. "
@@ -125,32 +140,60 @@
           Confusius.
         </blockquote>
 
-        <h3>Images</h3>
+        <h2>Images</h2>
         <p>
           <img src="https://picsum.photos/800/300">
         </p>
-        <h3>Figure</h3>
+        <h2>Figure</h2>
         <figure>
           <img src="https://picsum.photos/800/320">
-          <figcaption>Radom image from  <a href="https://picsum.photos/">lorempicsum</a></figcaption>
+          <figcaption>Random image from  <a href="https://picsum.photos/">lorempicsum</a></figcaption>
         </figure>
 
-        <h3>Element de Formulare</h3>
-        <p>Ajout d'une props margin : 1rem 0, pour pas que cela fasse sale.</p>
+        <h2>Element de Formulaire</h2>
+        <p>Ajout d'une class avec une props margin : 1rem 0, pour pas que cela fasse sale.</p>
         <fieldset>
           <legend>Legende de formulaire</legend>
           <form>
             <div class="bloc_input">
               <label>
+                Select
+              </label>
+              <select>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+                <option>Option 4</option>
+              </select>
+            </div>
+            <div class="bloc_input">
+              <label>
                 Champs de saisie
               </label>
-              <input type="text"/>
+              <input type="text" placeholder="input de type text"/>
             </div>
             <div class="bloc_input">
               <label>
                 Textearea
               </label>
               <textarea></textarea>
+            </div>
+            <div class="bloc_input">
+              <label>
+                Checkbox :
+              </label>
+              <input type="checkbox" name="test" id="test">
+            </div>
+            <div class="bloc_input">
+              <label>
+                Bouton Radio :
+              </label>
+              <input type="radio" name="test" id="test">
+            </div>
+            <div class="bloc_input">
+              <button type="reset">Cancel</button>
+              <button type="submit">Valider</button>
+             
             </div>
           </form>
         </fieldset>
@@ -166,14 +209,14 @@
       type="button"
       class="fixed_bottomLeft-1 circle_btn"
     >
-      LOL
+    <i class="fas fa-bug"></i>
     </button>
     <button
       id="topScreen"
       type="button"
       class="topScreen fixed_bottomRight-1 circle_btn"
     >
-      LOL
+    <i class="fas fa-chevron-up"></i>
     </button>
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
     <script src="js/plugins.js"></script>
