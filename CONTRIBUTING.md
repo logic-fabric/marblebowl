@@ -7,6 +7,8 @@ This file is to help **newbies** get familiar with the Marble Bowl's contributio
 
 - [Why GitFlow](#why-gitflow)
 - [Process to collaborate](#process-to-collaborate)
+- [branch master](#branch-master)
+- [branch develop](#branch-develop)
 - [Submitting a Pull Request](#submitting-a-pull-request)
 
 
@@ -30,3 +32,9 @@ Feature branches also make it easier for multiple developers to **collaborate on
 | feature | Multiple | develop | Feature development | Code under development. Implementation of a feature that will have to be embedded in the next version of the application.  | 
 | develop | Unique | main | Permed | Code of the next version of the application. Once the development of a feature is finished, the code is merged on this branch | 
 
+=> parler de la branche master
+=> parler de la branche develop
+=> parler de la branche hotfix
+=> commit atomique
+
+=> merging par utilisateur propriétaire
