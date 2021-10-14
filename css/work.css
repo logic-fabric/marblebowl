@@ -87,20 +87,30 @@ main {
   transition: var(--shortDelay);
 }
 
-#adminBrowser:hover {
+#adminBrowser_btn:hover {
   transform: rotate(180deg);
 }
 
-#topScreen:hover {
+#topScreen_btn:hover {
   transform: scale(1.2);
 }
 
 .modalBox{
-  width : 100%;
+  padding: 5rem 2rem;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  min-width: 960px;
+  position: fixed;
+  top : 5rem;
+  left : calc(50% - (960px/2));
 }
 
 .outScreen_X{
-  transform : translateX(-100%);
+  transform : translateX(-200%);
+  transition: var(--shortDelay);
+
 }
 
 .bloc_input{
