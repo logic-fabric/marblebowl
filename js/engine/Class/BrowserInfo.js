@@ -5,11 +5,22 @@ export class BrowserInfo {
     this.el = {
       divInfo: document.querySelector(".modalBox"),
       addminBtn: document.getElementById("adminBrowser_btn"),
+      switchCssLink: document.querySelectorAll("[data-switchCss]"),
     };
 
-    console.log(this.el);
+    this.pathArray = window.location.pathname.substring(1).split(".");
+    this.path = this.path
+      ? (this.path = this.pathArray[0])
+      : (this.path = "index");
+    this.params = window.location.search ? window.location.search : false;
 
-    this.el.addminBtn.addEventListener("click", (e) => this.showAdmin(this.el));
+    if (this.params) {
+      const get = this.params.substring(1).split("=");
+      console.log(get);
+      this.paramsURL = get[1];
+    }
+
+    console.log(this.el);
 
     //screen size of terminal
     this.innerWidth = window.innerWidth;
@@ -61,6 +72,38 @@ export class BrowserInfo {
     }
 
     this.el.divInfo.insertAdjacentHTML("beforeend", elHTML);
+    this.el.addminBtn.addEventListener("click", (e) => this.showAdmin(this.el));
+
+    var head = document.getElementsByTagName("HEAD")[0];
+    var link = document.createElement("link");
+    // set the attributes for link element
+    link.rel = "stylesheet";
+    link.href = "css/allReset/reset.css";
+
+    // Append link element to HTML head
+
+    console.log(document.querySelectorAll("link[title=switchCss]"));
+
+    switch (this.paramsURL) {
+      case "normalize":
+        break;
+      case "reset":
+        break;
+      case "html5reset":
+        break;
+      case "minireset":
+        break;
+      case "marx":
+        break;
+      case "typeset":
+        break;
+      case "cleanslate":
+        break;
+      case "sanitize":
+        break;
+    }
+    head.appendChild(link);
+   
 
     //event mouse
     //PageY
