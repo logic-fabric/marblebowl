@@ -20,6 +20,10 @@ main > * {
   padding: 0 1rem;
 }
 
+a {
+  color: #444;
+}
+
 a:focus {
-  color: red;
+  color: #444;
 }
