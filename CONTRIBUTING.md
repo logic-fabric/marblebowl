@@ -58,6 +58,6 @@ une fois que vous aurez forké le projet, il sera necéssaire de créer une bran
 `git commit -m "commit message"`;
 
 4 : Une fois que la nouvelle fonctionnalité a été poussée sur Git, se rendre sur *Github* et cliquer sur `compare & pull-request`,
-puis, sur `Open a pull request`: laisser un commentaire détaillant tout les changements et les avancées de la nouvelle fonctionnalité.
+puis, sur `Open a pull request`: laisser un commentaire détaillant tous les changements et les avancés de la nouvelle fonctionnalité.
 
-La `pull-request` pourra être lue et commentée par les autres participant et pourra être validée par le propriétaire du projet pour être intégrer à la branche `develop`.
+La `pull-request` pourra être lue et commentée par les autres participants et pourra être validée par le propriétaire du projet pour être intégrée à la branche `develop`.
