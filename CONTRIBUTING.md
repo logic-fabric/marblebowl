@@ -17,15 +17,15 @@ La possibilité de créer plusieurs branches rend le développement plus simple 
 
 ### Processus de collaboration
 
-Le code en cours de développement doit se trouver **sur une branche parralèle à la branche `main`** pour travailler et tester l'application.
+Le code en cours de développement doit se trouver **sur une branche parralèle à la branche `develop`** pour travailler et tester l'application.
 
 Lorsque vous débuterez une nouvelle fonctionnalité, la branche en cours de développement devra se nommer tel que :  
 `feature-nom-de-la-fonctionnalité`.
 
 Par exemple : `feature-increment-counter`.
 
-Une fois que vous aurez terminé votre nouvelle fonctionnalité, il faudra **pusher** un commit puis faire une `pull-request`.   
-Si la fonctionnalité convient à l'ensemble des développeurs, la branche sera **mergée** sur la branche `develop`.
+Une fois votre tâche terminée et votre dernier commit **pushé**, il vous faudra faire une `Pull Request` avec le bouton dédié.   
+Après une revue de code, si le code soumis convient, il sera intégré à la branche `develop`. Sinon, des modifications seront demandées.
 
 Il est préférable de faire des *commits atomiques* (petits commits contenant chacun un petit changement) pour faciliter le code review.
 
