@@ -53,6 +53,10 @@ section > * {
   cursor: pointer;
 }
 
+.btn {
+  cursor: pointer;
+}
+
 /* HTML BRUT */
 
 a {
