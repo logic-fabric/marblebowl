@@ -22,7 +22,7 @@ describe("GIVEN the MarbleCounter component", () => {
   });
 
   describe("WHEN the component is rendered with an amount of marble equal to 1", () => {
-    test('THEN the component displays with this amount of marbles paying attention to the plural of "bille noire"', () => {
+    test("THEN the component displays with this amount of marbles paying attention to the plural of 'bille noire'", () => {
       const store = { state: { marbleAmount: 1 } };
       const marbleCounter = new MarbleCounter(store);
       marbleCounter.render(store.state);
