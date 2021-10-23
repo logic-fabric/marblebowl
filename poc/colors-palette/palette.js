@@ -76,7 +76,13 @@ export class PaletteComponent {
 
   render() {
     for (let color of this._colors) {
-      const colorScale = new Scale(color, DOMINANT_BASIC_COLORS[color]);
+      let dominantColors = ["R", "G", "B"];
+
+      if (Object.keys(DOMINANT_BASIC_COLORS).includes(color)) {
+        dominantColors = DOMINANT_BASIC_COLORS[color];
+      }
+
+      const colorScale = new Scale(color, dominantColors);
 
       this._renderScale(color, colorScale.build());
       this._renderScaleValues();
