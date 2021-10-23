@@ -18,7 +18,7 @@ export class Store {
   }
 
   removeObserver(observer) {
-    this.observers = this.observers.filter(element => element !== observer)
+    this.observers = this.observers.filter((element) => element !== observer);
   }
 
   // The state object will call this method everytime it is updated.
