@@ -1,63 +1,40 @@
 # Pour contribuer à MarbleBowl
- 
-La contribution au projet MarbleBowl se fait par **pull request**, en suivant la philosophie du modèle de branche de **GitFlow**.  
 
-**Sommaire**
+Dans un premier temps, **forker ce _repository_** sur son compte _GitHub_. C'est sur ce _fork_ que se fera toute nouvelle contribution.
 
-- [Pourquoi GitFlow](#pourquoi-gitflow)
-- [Processus de collaboration](#processus-de-collaboration)
-- [Soumettre une pull-request](#soumettre-une-pull-request)
+La contribution au projet se fait en suivant un _GitFlow_ simplifié.
 
+## Pourquoi un GitFlow ?
 
-### Pourquoi GitFlow
+Chaque développement doit être travaillée **sur une branche séparée partant de `develop`**. Afin de passer en revue chaque contribution avant tout _merging_.
 
-MarbleBowl est un **projet collaboratif open source**, le processus de développement se fait par **cycles itératifs**, et chaque fonctionnalité doit être travaillée sur une **branche séparée** (en parallèle), dans le but de distinguer le travail de chacun.
+La création de ces branches permet d'isoler dans chaque contribution de la base de code commune, permettant ainsi à plusieurs développeurs de travailler en parallèle.
 
-La possibilité de créer plusieurs branches rend le développement plus simple pour **collaborer avec plusieurs développeurs sur un projet commun**, en isolant le code en cours de développement de celui qui est terminé et validé. 
+## Process pour contribuer
 
-### Processus de collaboration
+Le code de chaque contribution doit se trouver **sur une branche partant `develop`** (`develop`sert de branche de "pré-production", le code mis en production se trouvant sur `main`).
 
-Le code en cours de développement doit se trouver **sur une branche parralèle à la branche `develop`** pour travailler et tester l'application.
+Avant de créer une branche, il faut **s'assurer que la branche `develop` locale est bien synchronisée avec celle du repo originel** (`git pull / fetch`).
 
-Lorsque vous débuterez une nouvelle fonctionnalité, la branche en cours de développement devra se nommer tel que :  
-`feature-nom-de-la-fonctionnalité`.
+La branche dédiée à une tâche sera nommée selon le modèle :
+`[type de tâche]-[nom de la tâche]`
 
-Par exemple : `feature-increment-counter`.
+Par exemple :
 
-Une fois votre tâche terminée et votre dernier commit **pushé**, il vous faudra faire une `Pull Request` avec le bouton dédié.   
-Après une revue de code, si le code soumis convient, il sera intégré à la branche `develop`. Sinon, des modifications seront demandées.
+`feature-increment-counter`
 
-Il est préférable de faire des *commits atomiques* (petits commits contenant chacun un petit changement) pour faciliter le code review.
+`refactoring-display-inventory`
 
-**Branche main**
+`bugfix-player-healthbar`
 
-La branche `main` est la **branche principale**, elle est gérée par le propriétaire du projet.   
-À ce stade du développement, le code est testé, validé et potentiellement éligible à une **mise en production**.
+Une fois le **dernier commit pushé sur le repo forké**, il vous faudra **faire une _Pull Request_** avec le bouton _"Compare & pull request"_.
 
-**Branche develop**
+Laisser alors un **commentaire détaillant les modifications apportées**.
 
-La branche `develop` est la branche commune à tous les développeurs, elle correspond à la prochaine version de l’application.  
-Une fois que le développement d’une fonctionnalité (`feature`) est terminé, le code sera **mergé** sur cette branche.
+Après revue du code, si celui-ci convient, il sera intégré à la branche `develop`. Sinon, des modifications seront proposées qu'il faudra pusher, sans avoir besoin d'ouvrir une nouvelle _Pull Request_.
 
-**Branche feature-**
+Il est recommandé de **faire des _commits atomiques_** (commits ne contenant qu'un petit pas de développement), pour faciliter _code review_ et _debugging_.
 
-La branche `feature-` correspond au code en cours de développement, elle implémente une nouvelle fonctionnalité à embarquer pour la prochaine version de l’application.  
-Cette branche sera **mergée** sur la branche `develop`.
+## Apprendre à faire une Pull Request
 
-### Soumettre une pull-request
-
-une fois que vous aurez forké le projet, il sera necéssaire de créer une branche pour y soumettre la premère `pull-request` de la nouvelle fonctionnalité :
-
-1 : Créer une nouvelle branche à partir de `develop` :
-`git checkout -b feature-new-branch`;
-
-2 : Ajouter la feature à la **zone de staging** :
-`git add <file>`;
-
-3 : Commiter la fonctionnalité :
-`git commit -m "commit message"`;
-
-4 : Une fois que la nouvelle fonctionnalité a été poussée sur Git, se rendre sur *Github* et cliquer sur `compare & pull-request`,
-puis, sur `Open a pull request`: laisser un commentaire détaillant tous les changements et les avancés de la nouvelle fonctionnalité.
-
-La `pull-request` pourra être lue et commentée par les autres participants et pourra être validée par le propriétaire du projet pour être intégrée à la branche `develop`.
+Pour s'entrainer au process de la _Pull Request_, le repo [first-contributions](https://github.com/firstcontributions/first-contributions) donne plus de détails et permet de f'aire un essai "en toute sécurité". :-)
