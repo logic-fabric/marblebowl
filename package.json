@@ -1,0 +1,29 @@
+{
+  "name": "marblebowl",
+  "version": "1.0.0",
+  "description": "MarbleBowl, a RPG game in browser",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logic-fabric/marblebowl.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/logic-fabric/marblebowl/issues"
+  },
+  "homepage": "https://github.com/logic-fabric/marblebowl#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "jest": "^27.2.5"
+  }
+}
