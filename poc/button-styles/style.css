@@ -20,6 +20,14 @@ section {
   border-radius: 1.3rem;
 }
 
+a {
+  color: #444;
+}
+
+a:focus {
+  color: #444;
+}
+
 h2 {
   margin-bottom: 1.5rem;
 }
@@ -57,18 +65,7 @@ section > * {
   cursor: pointer;
 }
 
-/* HTML BRUT */
-
-a {
-  color: #444;
-}
-
-a:focus {
-  color: #444;
-}
-
 /* NIVEAU DE GRIS */
-
 .grey-btn-a {
   color: #aaa;
   background-color: #eee;
@@ -114,7 +111,6 @@ a:focus {
 }
 
 /* COULEUR SUR 5 NIVEAUX */
-
 .colored {
   color: #848;
 }
