@@ -4,7 +4,8 @@ import { ResetCounterButton } from "../components/ResetCounterButton.js";
 
 describe("GIVEN the ResetCounterButton component", () => {
   beforeEach(() => {
-    document.body.innerHTML = `<button type='button' id='reset-counter-button'></button>`;
+    document.body.innerHTML =
+      "<button type='button' id='reset-counter-button'></button>";
   });
 
   describe("WHEN the component is rendered", () => {
