@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 2rem;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  width: 70%;
+  display: flex;
+  padding: 2rem;
+  border: #444 solid 0.15rem;
+  border-radius: 1.3rem;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+}
+
+section > * {
+  padding: 0 1rem;
+}
+
+.html-brut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.html-container {
+  display: flex;
+  justify-content: space-between;
+  width: 55%;
+}
+
+.level {
+  margin-top: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.level a,
+.level button {
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+/* HTML BRUT */
+
+a {
+  color: #444;
+}
+
+a:focus {
+  color: #444;
+}
+
+/* NIVEAU DE GRIS */
+
+.grey-btn-a {
+  color: #aaa;
+  background-color: #eee;
+  border: #aaa solid 0.12rem;
+  border-radius: 0.15rem;
+}
+
+.grey-btn-b {
+  color: #888;
+  background-color: #eee;
+  border: #aaa solid 0.12rem;
+  border-radius: 0.15rem;
+}
+
+.grey-btn-c {
+  color: #444;
+  background-color: #ccc;
+  border: #aaa solid 0.12rem;
+  border-radius: 0.15rem;
+}
+
+.grey-btn-d {
+  color: white;
+  background-color: #222;
+  border: #888 solid 0.12rem;
+  border-radius: 0.15rem;
+}
+
+.grey-link-a {
+  color: #aaa;
+}
+
+.grey-link-b {
+  color: #888;
+}
+
+.grey-link-c {
+  color: #666;
+}
+
+.grey-link-d {
+  color: #222;
+}
+
+/* COULEUR SUR 5 NIVEAUX */
+
+.colored {
+  color: #848;
+}
+
+.colored-container{
+  border: #a6a solid 0.15rem;
+}
+
+.color-btn-a {
+  color: #a6a;
+  background-color: rgba(238, 187, 238, 0.5);
+  border: #a6a solid 0.12rem;
+  border-radius: 0.15rem;
+}
+
+.color-btn-b {
+  color: #848;
+  background-color: #ebe;
+  border: #848 solid 0.12rem;
+  border-radius: 0.15rem;
+}
+
+.color-btn-c {
+  color: #626;
+  background-color: rgba(170, 102, 170, 0.5);
+  border: #626 solid 0.12rem;
+  border-radius: 0.15rem;
+}
+
+.color-btn-d {
+  color: white;
+  background-color: #202;
+  border: #202 solid 0.12rem;
+  border-radius: 0.15rem;
+}
+
+.color-link-a {
+  color: #a6a;
+}
+
+.color-link-b {
+  color: #848;
+}
+
+.color-link-c {
+  color: #626;
+}
+
+.color-link-d {
+  color: #202;
+}
