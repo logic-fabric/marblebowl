@@ -4,7 +4,7 @@ Dans un premier temps, **forker ce _repository_** sur son compte _GitHub_. C'est
 
 La contribution au projet se fait en suivant un _GitFlow_ simplifié.
 
-## Pourquoi un GitFlow ?
+## Pourquoi un GitFlow
 
 Chaque développement doit être travaillée **sur une branche séparée partant de `develop`**. Afin de passer en revue chaque contribution avant tout _merging_.
 
