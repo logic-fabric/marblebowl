@@ -34,7 +34,7 @@ describe("GIVEN the MarbleCounter component", () => {
   });
 
   describe("WHEN the component is rendered with an amount of marble > 1", () => {
-    test('THEN the component displays with this amount of marbles paying attention to the plural of "bille noire"', () => {
+    test("THEN the component displays with this amount of marbles paying attention to the plural of 'bille noire'", () => {
       const store = { state: { marbleAmount: 5 } };
       const marbleCounter = new MarbleCounter(store);
       marbleCounter.render(store.state);
@@ -44,7 +44,7 @@ describe("GIVEN the MarbleCounter component", () => {
       ).toBeTruthy();
     });
   });
-  
+
   describe("WHEN the component is rendered and the state is updated", () => {
     test("THEN the component is updated with new state", () => {
       const store = { state: { marbleAmount: 1 } };
@@ -63,7 +63,7 @@ describe("GIVEN the MarbleCounter component", () => {
       ).toBeTruthy();
     });
   });
-  
+
   describe("WHEN the method startCounter is fired", () => {
     test("THEN the marbleAmount state is incremented every seconds", () => {
       const store = {
@@ -88,7 +88,7 @@ describe("GIVEN the MarbleCounter component", () => {
       jest.clearAllTimers();
     });
   });
-  
+
   describe("WHEN the method stopCounter is fired", () => {
     test("THEN the state stop to increase", () => {
       const store = {
