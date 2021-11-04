@@ -1,5 +1,13 @@
+import { MainPlayerAction } from './components/MainPlayerAction/MainPlayerAction';
+import { MainStory } from './components/MainStory/MainStory';
+
 function App() {
-  return <h1>MarbleBowl</h1>;
+  return (
+    <div>
+      <MainStory />
+      <MainPlayerAction />
+    </div>
+  );
 }
 
 export default App;
