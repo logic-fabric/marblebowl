@@ -12,7 +12,7 @@ export const startCounter = () => (dispatch) => {
   dispatch(storeIntervalId(intervalId));
 };
 
-export const stopCounter = () => (dispatch, getState) => {
+export const stopCounter = () => (_, getState) => {
   clearInterval(getState().counter.intervalId);
 };
 
