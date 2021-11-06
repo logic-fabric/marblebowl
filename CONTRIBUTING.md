@@ -39,7 +39,7 @@ Il est recommandé de **faire des _commits atomiques_** (commits ne contenant qu
 
 Les messages de commit sont rédigés en anglais en suivant les conventions suivantes :
 
-```http
+```
 <type>(<domaine>): <court résumé>
   │        │             │
   │        │             └─⫸ résumé rédigé à l'impératif présent, sans majuscule au début ni ponctuation finale
