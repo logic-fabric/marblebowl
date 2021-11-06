@@ -5,18 +5,6 @@ const initialState = {
   value: 0,
 };
 
-export const startCounter = () => (dispatch) => {
-  const intervalId = setInterval(() => {
-    dispatch(incrementCounter());
-  }, 1000);
-
-  dispatch(storeIntervalId(intervalId));
-};
-
-export const stopCounter = () => (_, getState) => {
-  clearInterval(getState().counter.intervalId);
-};
-
 const counterSlice = createSlice({
   name: "counter",
   initialState,
@@ -33,6 +21,18 @@ const counterSlice = createSlice({
 
 export const { incrementCounter, resetCounter, storeIntervalId } =
   counterSlice.actions;
+
+export const startCounter = () => (dispatch) => {
+  const intervalId = setInterval(() => {
+    dispatch(incrementCounter());
+  }, 1000);
+
+  dispatch(storeIntervalId(intervalId));
+};
+
+export const stopCounter = () => (_, getState) => {
+  clearInterval(getState().counter.intervalId);
+};
 
 export const selectCounterValue = (state) => state.counter.value;
 
