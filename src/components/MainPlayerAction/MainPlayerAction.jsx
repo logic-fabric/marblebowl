@@ -1,11 +1,12 @@
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
 import {
-  selectCounterValue,
-  stopCounter,
-  startCounter,
   resetCounter,
-} from '../../features/counter';
+  selectCounterValue,
+  startCounter,
+  stopCounter,
+} from "../../features/counter";
 
 export const MainPlayerAction = () => {
   const marbleAmount = useSelector(selectCounterValue);

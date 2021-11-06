@@ -1,7 +1,7 @@
-import { MainPlayerAction } from './components/MainPlayerAction/MainPlayerAction';
-import { MainStory } from './components/MainStory/MainStory';
+import { MainPlayerAction } from "./components/MainPlayerAction/MainPlayerAction";
+import { MainStory } from "./components/MainStory/MainStory";
 
-function App() {
+export function App() {
   return (
     <div>
       <MainStory />
@@ -9,5 +9,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

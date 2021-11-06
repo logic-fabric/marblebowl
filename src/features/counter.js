@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   intervalId: null,
@@ -9,6 +9,7 @@ export const startCounter = () => (dispatch) => {
   const intervalId = setInterval(() => {
     dispatch(incrementCounter());
   }, 1000);
+
   dispatch(storeIntervalId(intervalId));
 };
 
@@ -17,7 +18,7 @@ export const stopCounter = () => (_, getState) => {
 };
 
 const counterSlice = createSlice({
-  name: 'counter',
+  name: "counter",
   initialState,
   reducers: {
     incrementCounter: (state) => {
