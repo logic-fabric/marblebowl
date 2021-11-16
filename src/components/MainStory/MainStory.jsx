@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { selectCounterValue, startCounter } from "../../features/counter";
+import { selectMarbleAmount, startCounter } from "../../features/counter";
 
 export const MainStory = () => {
-  const marbleAmount = useSelector(selectCounterValue);
+  const marbleAmount = useSelector(selectMarbleAmount);
   const dispatch = useDispatch();
 
   useEffect(() => {
