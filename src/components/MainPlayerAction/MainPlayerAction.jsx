@@ -2,29 +2,48 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 import {
-  resetCounter,
-  selectCounterValue,
+  resetMarbleAmount,
+  selectCounter,
   startCounter,
   stopCounter,
+  throwMarbles,
 } from "../../features/counter";
 
 export const MainPlayerAction = () => {
-  const marbleAmount = useSelector(selectCounterValue);
+  const { marbleAmount, thrownAmount } = useSelector(selectCounter);
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleReset = () => {
     dispatch(stopCounter());
-    dispatch(resetCounter());
+    dispatch(resetMarbleAmount());
     dispatch(startCounter());
   };
 
   return (
-    <>
-      {marbleAmount >= 4 ? (
-        <button type="button" onClick={handleClick}>
+    <div className="mainPlayerAction">
+      {marbleAmount + thrownAmount >= 4 ? (
+        <button type="button" onClick={handleReset}>
           Recommencer
         </button>
       ) : null}
-    </>
+      {marbleAmount + thrownAmount >= 10 ? (
+        <button
+          type="button"
+          onClick={() => dispatch(throwMarbles(1))}
+          disabled={marbleAmount < 1}
+        >
+          Jeter 1 bille par terre
+        </button>
+      ) : null}
+      {marbleAmount + thrownAmount >= 20 ? (
+        <button
+          type="button"
+          onClick={() => dispatch(throwMarbles(10))}
+          disabled={marbleAmount < 10}
+        >
+          Jeter 10 billes par terre
+        </button>
+      ) : null}
+    </div>
   );
 };
