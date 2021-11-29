@@ -20,7 +20,7 @@ export const PlayerOptionsBox = () => {
   };
 
   return (
-    <div className="mainPlayerAction">
+    <>
       {marbleAmount + thrownAmount >= 4 ? (
         <button type="button" onClick={handleReset}>
           Recommencer
@@ -44,6 +44,6 @@ export const PlayerOptionsBox = () => {
           Jeter 10 billes par terre
         </button>
       ) : null}
-    </div>
+    </>
   );
 };
