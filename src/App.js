@@ -1,11 +1,11 @@
-import { MainPlayerAction } from "./components/MainPlayerAction/MainPlayerAction";
-import { MainStory } from "./components/MainStory/MainStory";
+import { PlayerOptionsBox } from "./components/PlayerOptionsBox/PlayerOptionsBox";
+import { StoryBox } from "./components/StoryBox/StoryBox";
 
 export function App() {
   return (
     <div>
-      <MainStory />
-      <MainPlayerAction />
+      <StoryBox />
+      <PlayerOptionsBox />
     </div>
   );
 }

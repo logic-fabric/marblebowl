@@ -9,7 +9,7 @@ import {
   throwMarbles,
 } from "../../features/counter";
 
-export const MainPlayerAction = () => {
+export const PlayerOptionsBox = () => {
   const { marbleAmount, thrownAmount } = useSelector(selectCounter);
   const dispatch = useDispatch();
 

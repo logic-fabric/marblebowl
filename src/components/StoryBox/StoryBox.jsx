@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { selectCounter, startCounter } from "../../features/counter";
 
-export const MainStory = () => {
+export const StoryBox = () => {
   const { marbleAmount, thrownAmount } = useSelector(selectCounter);
   const dispatch = useDispatch();
 
