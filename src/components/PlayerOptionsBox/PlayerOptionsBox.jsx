@@ -44,6 +44,9 @@ export const PlayerOptionsBox = () => {
           Jeter 10 billes par terre
         </button>
       ) : null}
+      {marbleAmount >= 30 ? (
+        <button>Augmenter l'univers des possibles</button>
+      ) : null}
     </>
   );
 };
