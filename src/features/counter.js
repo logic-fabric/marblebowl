@@ -4,6 +4,8 @@ const initialState = {
   intervalId: null,
   marbleAmount: 0,
   thrownAmount: 0,
+  saveFeature: false,
+  loadFeature: false,
 };
 
 const counterSlice = createSlice({
@@ -23,6 +25,18 @@ const counterSlice = createSlice({
         state.marbleAmount -= action.payload;
       }
     },
+    addSaveFeature: (state, action) => {
+      if (state.marbleAmount >= action.payload) {
+        state.marbleAmount -= action.payload;
+        state.saveFeature = true;
+      }
+    },
+    addLoadFeature: (state, action) => {
+      if (state.marbleAmount >= action.payload) {
+        state.marbleAmount -= action.payload;
+        state.loadFeature = true;
+      }
+    },
   },
 });
 
@@ -31,6 +45,8 @@ export const {
   resetMarbleAmount,
   storeIntervalId,
   throwMarbles,
+  addLoadFeature,
+  addSaveFeature,
 } = counterSlice.actions;
 
 export const startCounter = () => (dispatch) => {
