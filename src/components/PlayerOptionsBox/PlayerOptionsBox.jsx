@@ -7,16 +7,24 @@ import {
   startCounter,
   stopCounter,
   throwMarbles,
+  addLoadFeature,
+  addSaveFeature,
 } from "../../features/counter";
 
 export const PlayerOptionsBox = () => {
-  const { marbleAmount, thrownAmount } = useSelector(selectCounter);
+  const { marbleAmount, thrownAmount, saveFeature, loadFeature } =
+    useSelector(selectCounter);
   const dispatch = useDispatch();
 
   const handleReset = () => {
     dispatch(stopCounter());
     dispatch(resetMarbleAmount());
     dispatch(startCounter());
+  };
+
+  const addSaveAndLoad = () => {
+    if (saveFeature) dispatch(addLoadFeature(30));
+    else dispatch(addSaveFeature(30));
   };
 
   return (
@@ -44,8 +52,14 @@ export const PlayerOptionsBox = () => {
           Jeter 10 billes par terre
         </button>
       ) : null}
-      {marbleAmount >= 30 ? (
-        <button>Augmenter l'univers des possibles</button>
+      {marbleAmount >= 30 && !loadFeature ? (
+        <button
+          type="button"
+          onClick={addSaveAndLoad}
+          disabled={marbleAmount < 30}
+        >
+          Augmenter l'univers des possibles
+        </button>
       ) : null}
     </>
   );
