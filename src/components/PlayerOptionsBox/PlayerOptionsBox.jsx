@@ -11,6 +11,13 @@ import {
   throwMarbles,
 } from "../../features/counter";
 
+const MARBLE_THRESHOLDS = {
+  reset: 4,
+  throw1: 10,
+  throw10: 20,
+  addSaveAndLoad: 30,
+};
+
 export const PlayerOptionsBox = () => {
   const { loadFeature, marbleAmount, saveFeature, thrownAmount } =
     useSelector(selectCounter);
@@ -29,12 +36,12 @@ export const PlayerOptionsBox = () => {
 
   return (
     <>
-      {marbleAmount + thrownAmount >= 4 ? (
+      {marbleAmount + thrownAmount >= MARBLE_THRESHOLDS.reset ? (
         <button type="button" onClick={handleReset}>
           Recommencer
         </button>
       ) : null}
-      {marbleAmount + thrownAmount >= 10 ? (
+      {marbleAmount + thrownAmount >= MARBLE_THRESHOLDS.throw1 ? (
         <button
           type="button"
           onClick={() => dispatch(throwMarbles(1))}
@@ -43,7 +50,7 @@ export const PlayerOptionsBox = () => {
           Jeter 1 bille par terre
         </button>
       ) : null}
-      {marbleAmount + thrownAmount >= 20 ? (
+      {marbleAmount + thrownAmount >= MARBLE_THRESHOLDS.throw10 ? (
         <button
           type="button"
           onClick={() => dispatch(throwMarbles(10))}
@@ -52,7 +59,7 @@ export const PlayerOptionsBox = () => {
           Jeter 10 billes par terre
         </button>
       ) : null}
-      {marbleAmount >= 30 && !loadFeature ? (
+      {marbleAmount >= MARBLE_THRESHOLDS.addSaveAndLoad && !loadFeature ? (
         <button
           type="button"
           onClick={addSaveAndLoad}
