@@ -2,17 +2,17 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 import {
+  addLoadFeature,
+  addSaveFeature,
   resetMarbleAmount,
   selectCounter,
   startCounter,
   stopCounter,
   throwMarbles,
-  addLoadFeature,
-  addSaveFeature,
 } from "../../features/counter";
 
 export const PlayerOptionsBox = () => {
-  const { marbleAmount, thrownAmount, saveFeature, loadFeature } =
+  const { loadFeature, marbleAmount, saveFeature, thrownAmount } =
     useSelector(selectCounter);
   const dispatch = useDispatch();
 
