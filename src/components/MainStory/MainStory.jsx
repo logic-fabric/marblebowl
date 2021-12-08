@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import {
@@ -8,6 +8,8 @@ import {
   stopCounter,
   throwMarbles,
 } from "../../features/counter";
+
+const MAXIMUM_AMOUNT_IN_BAG = 100; // Amount to decide
 
 const SENTENCES = {
   firstPart: [
@@ -21,12 +23,31 @@ const SENTENCES = {
     "Pour vous saluer :",
     "Hello l'ami ! Un problème pour conserver vos billes ?",
   ],
+  secondPart: [
+    "Voici un objet qui devrait pouvoir vous aider.",
+    "Comme vous voudrez... J'ai des sacs de piètre facture sinon.",
+  ],
 };
 
 const MainStory = () => {
   const { marbleAmount, thrownAmount } = useSelector(selectCounter);
+  const [displayedSentenceIndex, setDisplayedSentenceIndex] = useState(0);
 
-  return <div>{thrownAmount >= 40 && SENTENCES.firstPart[0]}</div>;
+  useEffect(() => {
+    if (marbleAmount >= MAXIMUM_AMOUNT_IN_BAG + 5 || thrownAmount >= 40) {
+      const interval = setInterval(
+        () => setDisplayedSentenceIndex((index) => index + 1),
+        1500
+      );
+      return () => clearInterval(interval);
+    }
+  }, []);
+
+  return (
+    <div>
+      <p>{SENTENCES.firstPart[displayedSentenceIndex]}</p>
+    </div>
+  );
 };
 
 export default MainStory;
