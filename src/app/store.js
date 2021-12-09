@@ -4,7 +4,7 @@ import player from "../features/playerSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counter,
+    counter,
     player,
   },
 });
