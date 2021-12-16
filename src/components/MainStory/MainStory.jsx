@@ -11,24 +11,7 @@ import {
 
 const MAXIMUM_AMOUNT_IN_BAG = 100; // Amount to decide
 
-const SENTENCES = {
-  firstPart: [
-    "Une silhouette se dessine dans la brume...",
-    "Celle d'un mystérieux individu, engoncé dans un long manteau...",
-    "... qui s'approche de vous...",
-    "Le visage dissimulé par d'imposantes lunettes fumées et un chapeau au large bord...",
-    "Il continue de s'approcher de vous...",
-    "... encore...",
-    "... et encore...",
-    "Pour vous saluer :",
-    "Hello l'ami ! Un problème pour conserver vos billes ?",
-  ],
-  secondPart: [
-    "Voici un objet qui devrait pouvoir vous aider.",
-    "Comme vous voudrez... J'ai des sacs de piètre facture sinon.",
-  ],
-};
-const test = [
+const SENTENCES = [
   "Une silhouette se dessine dans la brume...",
   "Celle d'un mystérieux individu, engoncé dans un long manteau...",
   "... qui s'approche de vous...",
@@ -80,15 +63,15 @@ const MainStory = () => {
 
 
   return (
-    <div>
-      <p>{test[displayedSentenceIndex]}</p>
+    <>
+      <p>{SENTENCES[displayedSentenceIndex.current]}</p>
       {isFirstPartOver && (
         <>
           <button onClick={giveMarbleBowl}>Oui</button>
           <button>Non</button>
         </>
       )}
-    </div>
+    </>
   );
 };
 
