@@ -25,21 +25,6 @@ const SENTENCES = [
   "Comme vous voudrez... J'ai des sacs de piètre facture sinon.",
 ];
 
-/* Pseudocode:
-    if (marbleAmount < MAXIMUM_AMOUNT_IN_BAG + 5 || thrownAmount < 40) return;
-
-    let i;
-    while (i < 8) {
-        displayedSentence = sentences[i]
-        i ++
-    }
-    
-    a la fin de la boucle, affiche 2 boutons Oui et Non
-    
-    si oui, "Voici un objet qui devrait pouvoir vous aider." s'affiche et joueur recoit Bol à Billes
-
-*/
-
 const MainStory = () => {
   const { marbleAmount, thrownAmount, completedEvents } =
     useSelector(selectCounter);
