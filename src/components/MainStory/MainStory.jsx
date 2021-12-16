@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
-  resetMarbleAmount,
-  selectCounter,
-  startCounter,
-  stopCounter,
   throwMarbles,
+  selectCounter,
+  completeEvent,
 } from "../../features/counter";
+import { editInventory } from "../../features/playerSlice";
 
 const MAXIMUM_AMOUNT_IN_BAG = 100; // Amount to decide
 
@@ -42,25 +41,34 @@ const SENTENCES = [
 */
 
 const MainStory = () => {
-  const { marbleAmount, thrownAmount } = useSelector(selectCounter);
-  const [displayedSentenceIndex, setDisplayedSentenceIndex] = useState(0);
-
-  useEffect(() => {
-    if (marbleAmount >= MAXIMUM_AMOUNT_IN_BAG + 5 || thrownAmount >= 40) {
-      const interval = setInterval(
-        () => setDisplayedSentenceIndex((index) => index + 1),
-        1500
-      );
-      return () => clearInterval(interval);
-    }
-  }, []);
+  const { marbleAmount, thrownAmount, completedEvents } =
+    useSelector(selectCounter);
   const dispatch = useDispatch();
-  const [displayedSentenceIndex, setDisplayedSentenceIndex] = useState(null);
-  const [isFirstPartOver, setIsFirstPartOver] = useState(true);
+  const displayedSentenceIndex = useRef(null);
+  const [isFirstPartOver, setIsFirstPartOver] = useState(false);
 
   const giveMarbleBowl = () =>
     dispatch(editInventory("marbleContainer", "Marble Bowl"));
 
+  useEffect(() => {
+    if (completedEvents.includes(1)) return;
+    if (marbleAmount >= MAXIMUM_AMOUNT_IN_BAG + 5 || thrownAmount >= 40) {
+      if (displayedSentenceIndex.current === null) {
+        displayedSentenceIndex.current = 0;
+        return;
+      }
+
+      if (displayedSentenceIndex.current < 8) {
+        const interval = setInterval(displayedSentenceIndex.current++, 1500);
+        return () => clearInterval(interval);
+      }
+
+      if (displayedSentenceIndex.current === 8) {
+        setIsFirstPartOver(true);
+      }
+      dispatch(completeEvent(1));
+    }
+  }, [completedEvents, dispatch, marbleAmount, thrownAmount]);
 
   return (
     <>
