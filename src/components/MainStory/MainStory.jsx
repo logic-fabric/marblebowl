@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import {
-  throwMarbles,
-  selectCounter,
-  completeEvent,
-} from "../../features/counter";
+import { selectCounter, completeEvent } from "../../features/counter";
 import { editInventory } from "../../features/playerSlice";
 
 const MAXIMUM_AMOUNT_IN_BAG = 100; // Amount to decide
