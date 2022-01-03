@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { selectCounter, completeEvent } from "../../features/counter";
@@ -26,12 +26,11 @@ const MainStory = () => {
     useSelector(selectCounter);
   const dispatch = useDispatch();
   const displayedSentenceIndex = useRef(null);
-  const [isFirstPartOver, setIsFirstPartOver] = useState(false);
 
   const giveMarbleBowl = () =>
     dispatch(editInventory("marbleContainer", "Marble Bowl"));
 
-  useEffect(() => {
+  const displayFirstPart = useCallback(() => {
     if (completedEvents.includes(1)) return;
     if (marbleAmount >= MAXIMUM_AMOUNT_IN_BAG + 5 || thrownAmount >= 40) {
       if (displayedSentenceIndex.current === null) {
@@ -44,17 +43,18 @@ const MainStory = () => {
         return () => clearInterval(interval);
       }
 
-      if (displayedSentenceIndex.current === 8) {
-        setIsFirstPartOver(true);
-      }
       dispatch(completeEvent(1));
     }
   }, [completedEvents, dispatch, marbleAmount, thrownAmount]);
 
+  useEffect(() => {
+    displayFirstPart();
+  }, [completedEvents, dispatch, displayFirstPart, marbleAmount, thrownAmount]);
+
   return (
     <>
       <p>{SENTENCES[displayedSentenceIndex.current]}</p>
-      {isFirstPartOver && (
+      {completedEvents.includes(1) && (
         <>
           <button onClick={giveMarbleBowl}>Oui</button>
           <button>Non</button>
