@@ -39,13 +39,27 @@ const MainStory = () => {
       }
 
       if (displayedSentenceIndex.current < 8) {
-        const interval = setInterval(displayedSentenceIndex.current++, 1500);
-        return () => clearInterval(interval);
+        const intervalID = setInterval(displayedSentenceIndex.current++, 1500);
+        return () => clearInterval(intervalID);
       }
 
       dispatch(completeEvent(1));
     }
   }, [completedEvents, dispatch, marbleAmount, thrownAmount]);
+
+  const displaySecondPart = (choice) => {
+    switch (choice) {
+      case "yes":
+        giveMarbleBowl();
+        displayedSentenceIndex.current = 9;
+        break;
+      case "no":
+        displayedSentenceIndex.current = 10;
+        break;
+      default:
+        return;
+    }
+  };
 
   useEffect(() => {
     displayFirstPart();
@@ -54,11 +68,14 @@ const MainStory = () => {
   return (
     <>
       <p>{SENTENCES[displayedSentenceIndex.current]}</p>
-      {completedEvents.includes(1) && (
+      {displayedSentenceIndex.current === 8 && (
         <>
-          <button onClick={giveMarbleBowl}>Oui</button>
-          <button>Non</button>
+          <button onClick={() => displaySecondPart("yes")}>Oui</button>
+          <button onClick={() => displaySecondPart("no")}>Non</button>
         </>
+      )}
+      {displayedSentenceIndex.current === 10 && (
+        <button>Acheter un sac de piètre facture (5 billes)</button>
       )}
     </>
   );
