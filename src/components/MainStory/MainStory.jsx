@@ -1,7 +1,11 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { selectCounter, completeEvent } from "../../features/counter";
+import {
+  selectCounter,
+  completeEvent,
+  removeMarbles,
+} from "../../features/counter";
 import { editInventory } from "../../features/playerSlice";
 
 const MAXIMUM_AMOUNT_IN_BAG = 100; // Amount to decide
@@ -19,6 +23,9 @@ const SENTENCES = [
 
   "Voici un objet qui devrait pouvoir vous aider.",
   "Comme vous voudrez... J'ai des sacs de piètre facture sinon.",
+
+  "Vous me faites trop de peine avec vos billes perdues.",
+  "Tenez. Prenez cet objet qui devrait vous aider.",
 ];
 
 const MainStory = () => {
@@ -39,7 +46,7 @@ const MainStory = () => {
       }
 
       if (displayedSentenceIndex.current < 8) {
-        const intervalID = setInterval(displayedSentenceIndex.current++, 1500);
+        const intervalID = setInterval(displayedSentenceIndex.current++, 1500); // Interval to decide
         return () => clearInterval(intervalID);
       }
 
@@ -55,10 +62,18 @@ const MainStory = () => {
         break;
       case "no":
         displayedSentenceIndex.current = 10;
+        setTimeout(() => {
+          displayedSentenceIndex.current = 11;
+        }, 180000);
+        setTimeout(() => {
+          displayedSentenceIndex.current = 12;
+          giveMarbleBowl();
+        }, 182000);
         break;
       default:
         return;
     }
+    dispatch(completeEvent(2));
   };
 
   useEffect(() => {
@@ -75,7 +90,9 @@ const MainStory = () => {
         </>
       )}
       {displayedSentenceIndex.current === 10 && (
-        <button>Acheter un sac de piètre facture (5 billes)</button>
+        <button onClick={() => dispatch(removeMarbles(5))}>
+          Acheter un sac de piètre facture (5 billes)
+        </button>
       )}
     </>
   );
