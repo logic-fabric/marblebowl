@@ -6,6 +6,7 @@ const initialState = {
   thrownAmount: 0,
   saveFeature: false,
   loadFeature: false,
+  marbleContainer: { name: "poche", capacity: 35 },
 };
 
 const counterSlice = createSlice({
