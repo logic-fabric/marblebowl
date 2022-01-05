@@ -43,7 +43,7 @@ export const PlayerOptionsBox = () => {
 
   const getCheapBag = () => {
     dispatch(
-      updateMarbleContainer({ name: "sac de piètre facture", capacity: 50 })
+      updateMarbleContainer({ name: "sac de piètre facture", capacity: 70 })
     );
     dispatch(updateCheapBagEvent(undefined));
   };
