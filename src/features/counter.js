@@ -6,6 +6,7 @@ const initialState = {
   thrownAmount: 0,
   saveFeature: false,
   loadFeature: false,
+  cheapBagEvent: undefined,
   marbleContainer: { name: "poche", capacity: 35 },
 };
 
@@ -47,6 +48,9 @@ const counterSlice = createSlice({
         state.marbleAmount = action.payload.capacity;
       }
     },
+    updateCheapBagEvent: (state, action) => {
+      state.cheapBagEvent = action.payload;
+    },
   },
 });
 
@@ -58,6 +62,7 @@ export const {
   addLoadFeature,
   addSaveFeature,
   updateMarbleContainer,
+  updateCheapBagEvent,
 } = counterSlice.actions;
 
 export const startCounter = () => (dispatch) => {
