@@ -14,7 +14,9 @@ const counterSlice = createSlice({
   initialState,
   reducers: {
     incrementMarbleAmount: (state) => {
-      state.marbleAmount += 1;
+      if (state.marbleAmount < state.marbleContainer.capacity)
+        state.marbleAmount += 1;
+      else state.thrownAmount += 1;
     },
     resetMarbleAmount: () => initialState,
     storeIntervalId: (state, action) => {
