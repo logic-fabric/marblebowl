@@ -17,6 +17,9 @@ const counterSlice = createSlice({
     incrementMarbleAmount: (state) => {
       state.marbleAmount += 1;
     },
+    removeMarbles: (state, action) => {
+      state.marbleAmount -= action.payload;
+    },
     resetMarbleAmount: () => initialState,
     storeIntervalId: (state, action) => {
       state.intervalId = action.payload;
@@ -33,6 +36,7 @@ const counterSlice = createSlice({
 export const {
   completeEvent,
   incrementMarbleAmount,
+  removeMarbles,
   resetMarbleAmount,
   storeIntervalId,
   throwMarbles,
