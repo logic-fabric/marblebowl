@@ -40,6 +40,13 @@ const counterSlice = createSlice({
         state.loadFeature = true;
       }
     },
+    updateMarbleContainer: (state, action) => {
+      state.marbleContainer = action.payload;
+      if (state.marbleAmount > action.payload.capacity) {
+        state.thrownAmount += state.marbleAmount - action.payload.capacity;
+        state.marbleAmount = action.payload.capacity;
+      }
+    },
   },
 });
 
@@ -50,6 +57,7 @@ export const {
   throwMarbles,
   addLoadFeature,
   addSaveFeature,
+  updateMarbleContainer,
 } = counterSlice.actions;
 
 export const startCounter = () => (dispatch) => {
