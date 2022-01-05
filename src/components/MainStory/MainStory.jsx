@@ -22,8 +22,8 @@ const SENTENCES = [
   "Hello l'ami ! Un problème pour conserver vos billes ?",
 
   "Voici un objet qui devrait pouvoir vous aider.",
-  "Comme vous voudrez... J'ai des sacs de piètre facture sinon.",
 
+  "Comme vous voudrez... J'ai des sacs de piètre facture sinon.",
   "Vous me faites trop de peine avec vos billes perdues.",
   "Tenez. Prenez cet objet qui devrait vous aider.",
 ];
@@ -40,6 +40,7 @@ const MainStory = () => {
   const displayFirstPart = useCallback(() => {
     if (completedEvents.includes(1)) return;
     if (marbleAmount >= MAXIMUM_AMOUNT_IN_BAG + 5 || thrownAmount >= 40) {
+      // If we haven't started displaying the sentences, set the index to 0
       if (displayedSentenceIndex.current === null) {
         displayedSentenceIndex.current = 0;
         return;
@@ -59,7 +60,11 @@ const MainStory = () => {
       case "yes":
         giveMarbleBowl();
         displayedSentenceIndex.current = 9;
+        setTimeout(() => {
+          displayedSentenceIndex.current = null;
+        }, 4000);
         break;
+
       case "no":
         displayedSentenceIndex.current = 10;
         setTimeout(() => {
@@ -69,7 +74,11 @@ const MainStory = () => {
           displayedSentenceIndex.current = 12;
           giveMarbleBowl();
         }, 182000);
+        setTimeout(() => {
+          displayedSentenceIndex.current = null;
+        }, 186000);
         break;
+
       default:
         return;
     }
