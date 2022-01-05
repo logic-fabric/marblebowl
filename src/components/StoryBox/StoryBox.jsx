@@ -46,6 +46,9 @@ export const StoryBox = () => {
       {marbleContainer.name === "poche percée" ? (
         <p>Oups ! Votre poche s'est percée sous le poids des billes !</p>
       ) : null}
+      {cheapBagEvent && thrownAmount >= cheapBagEvent.sentence ? (
+        <p>Un sac de piètre facture passe par là, poussé par le vent...</p>
+      ) : null}
     </>
   );
 };

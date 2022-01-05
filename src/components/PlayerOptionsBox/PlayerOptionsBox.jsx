@@ -9,6 +9,8 @@ import {
   startCounter,
   stopCounter,
   throwMarbles,
+  updateCheapBagEvent,
+  updateMarbleContainer,
 } from "../../features/counter";
 
 const MARBLE_THRESHOLDS = {
@@ -19,8 +21,13 @@ const MARBLE_THRESHOLDS = {
 };
 
 export const PlayerOptionsBox = () => {
-  const { loadFeature, marbleAmount, saveFeature, thrownAmount } =
-    useSelector(selectCounter);
+  const {
+    loadFeature,
+    marbleAmount,
+    saveFeature,
+    thrownAmount,
+    cheapBagEvent,
+  } = useSelector(selectCounter);
   const dispatch = useDispatch();
 
   const handleReset = () => {
@@ -32,6 +39,13 @@ export const PlayerOptionsBox = () => {
   const addSaveAndLoad = () => {
     if (saveFeature) dispatch(addLoadFeature(30));
     else dispatch(addSaveFeature(30));
+  };
+
+  const getCheapBag = () => {
+    dispatch(
+      updateMarbleContainer({ name: "sac de piètre facture", capacity: 50 })
+    );
+    dispatch(updateCheapBagEvent(undefined));
   };
 
   return (
@@ -66,6 +80,11 @@ export const PlayerOptionsBox = () => {
           disabled={marbleAmount < 30}
         >
           Augmenter l'univers des possibles
+        </button>
+      ) : null}
+      {cheapBagEvent && thrownAmount >= cheapBagEvent.button ? (
+        <button type="button" onClick={getCheapBag}>
+          Ramasser le sac de piètre facture
         </button>
       ) : null}
     </>
