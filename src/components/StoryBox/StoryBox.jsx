@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectCounter,
   startCounter,
+  updateCheapBagEvent,
   updateMarbleContainer,
 } from "../../features/counter";
 
 export const StoryBox = () => {
-  const { marbleAmount, thrownAmount, marbleContainer } =
+  const { marbleAmount, thrownAmount, marbleContainer, cheapBagEvent } =
     useSelector(selectCounter);
   const dispatch = useDispatch();
 
@@ -20,9 +21,16 @@ export const StoryBox = () => {
     if (
       marbleContainer.name === "poche" &&
       marbleAmount === marbleContainer.capacity
-    )
+    ) {
       dispatch(updateMarbleContainer({ name: "poche percée", capacity: 0 }));
-  }, [dispatch, marbleAmount, marbleContainer]);
+      dispatch(
+        updateCheapBagEvent({
+          sentence: marbleAmount + thrownAmount + 5,
+          button: marbleAmount + thrownAmount + 10,
+        })
+      );
+    }
+  }, [dispatch, marbleAmount, marbleContainer, thrownAmount]);
 
   return (
     <>
