@@ -30,6 +30,16 @@ export const StoryBox = () => {
         })
       );
     }
+    if (
+      marbleContainer.name === "sac de piètre facture" &&
+      marbleAmount === marbleContainer.capacity
+    )
+      dispatch(
+        updateMarbleContainer({
+          name: "sac de piètre facture percé",
+          capacity: 0,
+        })
+      );
   }, [dispatch, marbleAmount, marbleContainer, thrownAmount]);
 
   return (
@@ -39,12 +49,16 @@ export const StoryBox = () => {
           thrownAmount <= 1 ? "bille" : "billes"
         } par terre.`}</p>
       ) : null}
-      {marbleContainer.name === "poche" &&
+      {(marbleContainer.name === "poche" ||
+        marbleContainer.name === "sac de piètre facture") &&
       marbleAmount > marbleContainer.capacity - 10 ? (
-        <p>Vous commencez à avoir beaucoup de billes dans votre poche</p>
+        <p>{`Vous commencez à avoir beaucoup de billes dans votre ${marbleContainer.name}.`}</p>
       ) : null}
-      {marbleContainer.name === "poche percée" ? (
-        <p>Oups ! Votre poche s'est percée sous le poids des billes !</p>
+      {marbleContainer.name.includes("percé") ? (
+        <p>{`Oups ! Votre ${marbleContainer.name.replace(
+          / percée?/,
+          ""
+        )} a cédé sous le poids des billes !`}</p>
       ) : null}
       {cheapBagEvent && thrownAmount >= cheapBagEvent.sentence ? (
         <p>Un sac de piètre facture passe par là, poussé par le vent...</p>
