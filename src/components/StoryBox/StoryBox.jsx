@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { selectCounter, startCounter } from "../../features/counter";
+import {
+  selectCounter,
+  startCounter,
+  updateMarbleContainer,
+} from "../../features/counter";
 
 export const StoryBox = () => {
   const { marbleAmount, thrownAmount, marbleContainer } =
@@ -11,6 +15,14 @@ export const StoryBox = () => {
   useEffect(() => {
     dispatch(startCounter());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (
+      marbleContainer.name === "poche" &&
+      marbleAmount === marbleContainer.capacity
+    )
+      dispatch(updateMarbleContainer({ name: "poche percée", capacity: 0 }));
+  }, [dispatch, marbleAmount, marbleContainer]);
 
   return (
     <>
@@ -22,6 +34,9 @@ export const StoryBox = () => {
       {marbleContainer.name === "poche" &&
       marbleAmount > marbleContainer.capacity - 10 ? (
         <p>Vous commencez à avoir beaucoup de billes dans votre poche</p>
+      ) : null}
+      {marbleContainer.name === "poche percée" ? (
+        <p>Oups ! Votre poche s'est percée sous le poids des billes !</p>
       ) : null}
     </>
   );
