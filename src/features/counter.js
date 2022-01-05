@@ -6,6 +6,8 @@ const initialState = {
   thrownAmount: 0,
   saveFeature: false,
   loadFeature: false,
+  cheapBagEvent: undefined,
+  marbleContainer: { name: "poche", capacity: 35 },
 };
 
 const counterSlice = createSlice({
@@ -13,7 +15,9 @@ const counterSlice = createSlice({
   initialState,
   reducers: {
     incrementMarbleAmount: (state) => {
-      state.marbleAmount += 1;
+      if (state.marbleAmount < state.marbleContainer.capacity)
+        state.marbleAmount += 1;
+      else state.thrownAmount += 1;
     },
     resetMarbleAmount: () => initialState,
     storeIntervalId: (state, action) => {
@@ -37,6 +41,16 @@ const counterSlice = createSlice({
         state.loadFeature = true;
       }
     },
+    updateMarbleContainer: (state, action) => {
+      state.marbleContainer = action.payload;
+      if (state.marbleAmount > action.payload.capacity) {
+        state.thrownAmount += state.marbleAmount - action.payload.capacity;
+        state.marbleAmount = action.payload.capacity;
+      }
+    },
+    updateCheapBagEvent: (state, action) => {
+      state.cheapBagEvent = action.payload;
+    },
   },
 });
 
@@ -47,6 +61,8 @@ export const {
   throwMarbles,
   addLoadFeature,
   addSaveFeature,
+  updateMarbleContainer,
+  updateCheapBagEvent,
 } = counterSlice.actions;
 
 export const startCounter = () => (dispatch) => {
