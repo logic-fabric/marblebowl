@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { loadState } from "../app/localstorage";
 
 const initialState = {
   intervalId: null,
@@ -37,6 +38,15 @@ const counterSlice = createSlice({
         state.loadFeature = true;
       }
     },
+    loadCounterSave: (state) => {
+      const savedState = loadState().counter;
+      if (savedState !== undefined) {
+        state.marbleAmount = savedState.marbleAmount;
+        state.thrownAmount = savedState.thrownAmount;
+        state.loadFeature = savedState.loadFeature;
+        state.saveFeature = savedState.saveFeature;
+      }
+    },
   },
 });
 
@@ -47,6 +57,7 @@ export const {
   throwMarbles,
   addLoadFeature,
   addSaveFeature,
+  loadCounterSave,
 } = counterSlice.actions;
 
 export const startCounter = () => (dispatch) => {
