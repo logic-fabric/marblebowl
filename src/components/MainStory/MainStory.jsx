@@ -2,13 +2,15 @@ import React, { useEffect, useRef, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
-  selectCounter,
   completeEvent,
   removeMarbles,
+  selectCounter,
 } from "../../features/counter";
 import { editInventory } from "../../features/playerSlice";
 
 const MAXIMUM_AMOUNT_IN_BAG = 100; // Amount to decide
+const NEXT_SENTENCE_INTERVAL = 2000; // Interval to decide
+const THREE_MINUTES = 180000;
 
 const SENTENCES = [
   "Une silhouette se dessine dans la brume...",
@@ -47,7 +49,10 @@ const MainStory = () => {
       }
 
       if (displayedSentenceIndex.current < 8) {
-        const intervalID = setInterval(displayedSentenceIndex.current++, 1500); // Interval to decide
+        const intervalID = setInterval(
+          displayedSentenceIndex.current++,
+          NEXT_SENTENCE_INTERVAL
+        );
         return () => clearInterval(intervalID);
       }
 
@@ -56,32 +61,30 @@ const MainStory = () => {
   }, [completedEvents, dispatch, marbleAmount, thrownAmount]);
 
   const displaySecondPart = (choice) => {
-    switch (choice) {
-      case "yes":
-        giveMarbleBowl();
-        displayedSentenceIndex.current = 9;
-        setTimeout(() => {
-          displayedSentenceIndex.current = null;
-        }, 4000);
-        break;
-
-      case "no":
-        displayedSentenceIndex.current = 10;
-        setTimeout(() => {
-          displayedSentenceIndex.current = 11;
-        }, 180000);
-        setTimeout(() => {
-          displayedSentenceIndex.current = 12;
-          giveMarbleBowl();
-        }, 182000);
-        setTimeout(() => {
-          displayedSentenceIndex.current = null;
-        }, 186000);
-        break;
-
-      default:
-        return;
+    if (choice === "yes") {
+      giveMarbleBowl();
+      displayedSentenceIndex.current = 9;
+      // Remove the displayed sentence
+      setTimeout(() => {
+        displayedSentenceIndex.current = null;
+      }, NEXT_SENTENCE_INTERVAL + 2000);
     }
+
+    if (choice === "no") {
+      displayedSentenceIndex.current = 10;
+      setTimeout(() => {
+        displayedSentenceIndex.current = 11;
+      }, THREE_MINUTES);
+      setTimeout(() => {
+        displayedSentenceIndex.current = 12;
+        giveMarbleBowl();
+      }, NEXT_SENTENCE_INTERVAL + THREE_MINUTES);
+      // Remove the displayed sentence
+      setTimeout(() => {
+        displayedSentenceIndex.current = null;
+      }, THREE_MINUTES + 6000);
+    }
+
     dispatch(completeEvent(2));
   };
 
