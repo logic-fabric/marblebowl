@@ -6,7 +6,8 @@ const initialState = {
   marbleAmount: 0,
   thrownAmount: 0,
   saveFeature: false,
-  loadFeature: false,
+  // if there already is a save in the browser, unlocks the ability to load it instantly
+  loadFeature: typeof loadState() === "object",
 };
 
 const counterSlice = createSlice({
