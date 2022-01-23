@@ -38,7 +38,7 @@ const counterSlice = createSlice({
         state.loadFeature = true;
       }
     },
-    loadCounterSave: (state) => {
+    loadSavedCounter: (state) => {
       const savedState = loadState().counter;
       if (savedState !== undefined) {
         state.marbleAmount = savedState.marbleAmount;
@@ -57,7 +57,7 @@ export const {
   throwMarbles,
   addLoadFeature,
   addSaveFeature,
-  loadCounterSave,
+  loadSavedCounter,
 } = counterSlice.actions;
 
 export const startCounter = () => (dispatch) => {

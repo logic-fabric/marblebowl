@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectCounter, loadCounterSave } from "../../features/counter";
+import { selectCounter, loadSavedCounter } from "../../features/counter";
 import { store } from "../../app/store";
 import { saveState } from "../../app/localstorage";
 
@@ -9,7 +9,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const loadSave = () => {
-    dispatch(loadCounterSave());
+    dispatch(loadSavedCounter());
   };
 
   return (
