@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  completedEvents: [],
   intervalId: null,
   marbleAmount: 0,
   thrownAmount: 0,
@@ -12,8 +13,14 @@ const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
+    completeEvent: (state, action) => {
+      state.completedEvents.push(action.payload);
+    },
     incrementMarbleAmount: (state) => {
       state.marbleAmount += 1;
+    },
+    removeMarbles: (state, action) => {
+      state.marbleAmount -= action.payload;
     },
     resetMarbleAmount: () => initialState,
     storeIntervalId: (state, action) => {
@@ -41,7 +48,9 @@ const counterSlice = createSlice({
 });
 
 export const {
+  completeEvent,
   incrementMarbleAmount,
+  removeMarbles,
   resetMarbleAmount,
   storeIntervalId,
   throwMarbles,
