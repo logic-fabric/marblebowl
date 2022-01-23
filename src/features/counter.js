@@ -6,7 +6,7 @@ const initialState = {
   marbleAmount: 0,
   thrownAmount: 0,
   saveFeature: false,
-  // if there already is a save in the browser, unlocks the ability to load it instantly
+  // if there is a save in the browser on game launch, unlocks the ability to load it instantly
   loadFeature: typeof loadState() === "object",
 };
 
