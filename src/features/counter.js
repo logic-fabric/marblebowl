@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { loadState } from "../app/localstorage";
 
 const initialState = {
   intervalId: null,
   marbleAmount: 0,
   thrownAmount: 0,
   saveFeature: false,
-  loadFeature: false,
+  // if there is a save in the browser on game launch, unlocks the ability to load it instantly
+  loadFeature: typeof loadState() === "object",
 };
 
 const counterSlice = createSlice({
@@ -37,6 +39,15 @@ const counterSlice = createSlice({
         state.loadFeature = true;
       }
     },
+    loadSavedCounter: (state) => {
+      const savedState = loadState().counter;
+      if (savedState !== undefined) {
+        state.marbleAmount = savedState.marbleAmount;
+        state.thrownAmount = savedState.thrownAmount;
+        state.loadFeature = savedState.loadFeature;
+        state.saveFeature = savedState.saveFeature;
+      }
+    },
   },
 });
 
@@ -47,6 +58,7 @@ export const {
   throwMarbles,
   addLoadFeature,
   addSaveFeature,
+  loadSavedCounter,
 } = counterSlice.actions;
 
 export const startCounter = () => (dispatch) => {
